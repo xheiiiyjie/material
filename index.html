@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的PPT素材库</title>
+    <style>
+        /* --- 页面整体样式 --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* --- 内容居中容器 --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #7f8c8d;
+            margin-bottom: 40px;
+        }
+
+        /* --- 素材展示网格 --- */
+        .material-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            text-align: left;
+        }
+
+        /* --- 单个素材卡片 --- */
+        .material-item {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden; /* 防止图片溢出圆角 */
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .material-item:hover {
+            transform: translateY(-5px); /* 鼠标悬停时轻微上浮 */
+        }
+
+        .material-item img {
+            width: 100%;
+            height: 200px; /* 固定高度，让卡片大小统一 */
+            object-fit: cover; /* 保证图片不变形，并填满容器 */
+            display: block;
+        }
+
+        .item-info {
+            padding: 15px;
+        }
+
+        .item-info h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.1em;
+        }
+
+        /* --- 下载按钮 --- */
+        .download-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: #ffffff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .download-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>PPT 精美素材库</h1>
+        <p>点击下方的按钮下载高清原图，为你的PPT增添光彩！</p>
+
+        <div class="material-gallery">
+
+            <!-- ========= 素材 1 ========= -->
+            <div class="material-item">
+                <img src="assests\images\微信图片_20251016172314_25570_63.jpg" alt="1">
+                <div class="item-info">
+                    <h3>科技感背景图</h3>
+                    <!-- 关键点：href指向你的文件路径，download属性让它变成下载 -->
+                    <a href="assests\images\微信图片_20251016172314_25570_63.jpg" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+            <!-- ========= 素材 2 ========= -->
+            <div class="material-item">
+                <img src="assests\images\微信图片_20251016172333_25571_63.jpg" alt="2">
+                <div class="item-info">
+                    <h3>商务数据图表</h3>
+                    <a href="assests\images\微信图片_20251016172333_25571_63.jpg" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+            <!-- ========= 素材 3 ========= -->
+            <div class="material-item">
+                <img src="assests\images\微信图片_20251016172334_25572_63.jpg" alt="3">
+                <div class="item-info">
+                    <h3>扁平化图标集</h3>
+                    <a href="assests\images\微信图片_20251016172334_25572_63.jpg" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+            <!-- ========= 素材 4 (可以是其他类型文件，例如ZIP压缩包) ========= -->
+            <div class="material-item">
+                <!-- 给非图片文件一个预览图 -->
+                <img src="assests\images\微信图片_20251016172334_25573_63.jpg" alt="4">
+                <div class="item-info">
+                    <h3>完整PPT模板 (ZIP)</h3>
+                    <a href="assests\images\微信图片_20251016172334_25573_63.jpg" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+            
+            <!-- 你可以在这里添加更多的素材... -->
+
+        </div>
+    </div>
+
+</body>
+</html>
