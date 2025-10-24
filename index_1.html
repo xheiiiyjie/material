@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小黑PPT素材库</title>
+    <style>
+        /* --- 页面整体样式 --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            /* 为侧边栏滑动提供平滑过渡 */
+            transition: padding-left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* 当侧边栏打开时，主内容区向右推开 */
+        body.sidebar-is-open {
+            padding-left: 280px; /* 侧边栏宽度(320px) + 一点间距(20px) */
+        }
+
+        /* --- 新的侧边栏样式 (来自 danmu_1.4.html) --- */
+        .sidebar {
+            position: fixed; 
+            top: 0; /* 改为从顶部开始 */
+            left: 0; 
+            width: 260px; 
+            height: 100%; /* 改为全高，更通用 */
+            background-color: #fff; 
+            display: flex; 
+            flex-direction: column;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.15); 
+            z-index: 1000;
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform: translateX(-100%); /* 默认隐藏 */
+        }
+        .sidebar.sidebar-open { 
+            transform: translateX(0); /* 显示 */
+        }
+
+        /* 新的侧边栏开关按钮 */
+        .sidebar-toggle-button {
+            position: absolute; 
+            right: -40px; /* 关键：按钮在侧边栏外部 */
+            top: 50%; 
+            transform: translateY(-50%);
+            width: 40px; 
+            height: 120px; 
+            background-color: #fff; 
+            border-radius: 0 8px 8px 0;
+            box-shadow: 2px 0 8px rgba(0,0,0,0.1); 
+            cursor: pointer; 
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            color: #333; 
+            font-weight: bold;
+            writing-mode: vertical-rl; /* 让文字竖排 */
+            letter-spacing: 4px; 
+            font-size: 16px;
+        }
+
+        .sidebar-header { 
+            padding: 20px; 
+            border-bottom: 1px solid #e7e7e7; 
+            font-size: 1.5em; 
+            font-weight: bold; 
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        /* 我们自己的导航链接样式 */
+        .sidebar-nav {
+            list-style: none;
+            padding: 20px 0;
+            margin: 0;
+            flex-grow: 1;
+        }
+        .sidebar-nav li a {
+            display: block;
+            padding: 15px 25px; /* 增加内边距 */
+            color: #34495e;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .sidebar-nav li a:hover {
+            background-color: #f9f9f9;
+        }
+        .sidebar-nav li a.active {
+            background-color: #3498db;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+
+        /* --- 页面主要内容区 --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        h1 { color: #2c3e50; margin-bottom: 10px; }
+        p { color: #7f8c8d; margin-bottom: 40px; }
+        .material-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; text-align: left; }
+        .material-item { background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); overflow: hidden; transition: transform 0.2s ease-in-out; }
+        .material-item:hover { transform: translateY(-5px); }
+        .material-item img { width: 100%; height: 200px; object-fit: contain; display: block; }
+        .item-info { padding: 15px; }
+        .item-info h3 { margin: 0 0 10px 0; font-size: 1.1em; }
+        .download-button { display: inline-block; background-color: #3498db; color: #ffffff; padding: 10px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; transition: background-color 0.2s; }
+        .download-button:hover { background-color: #2980b9; }
+    </style>
+</head>
+<body>
+
+    <!-- ========= 新的侧边栏HTML结构 ========= -->
+    <div class="sidebar">
+        <div class="sidebar-toggle-button">导&nbsp;航&nbsp;菜&nbsp;单</div>
+        <div class="sidebar-header">我的素材库</div>
+        <!-- 导航内容区 -->
+        <ul class="sidebar-nav">
+            <!-- class="active" 表示当前页面 -->
+            <li><a href="index.html" class="active">PPT 素材</a></li>
+            <li><a href="textbooks.html">教材下载</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h1>小黑 PPT 精美素材库</h1>
+        <p>点击下方的按钮下载高清原图，为你的PPT增添光彩！</p>
+
+        <div class="material-gallery">
+
+            <!-- ========= 素材 1 ========= -->
+            <div class="material-item">
+                <img src="assests\images\标记素材.png" alt="标记素材">
+                <div class="item-info">
+                    <h3>标记素材</h3>
+                    <!-- 关键点：href指向你的文件路径，download属性让它变成下载 -->
+                    <a href="assests\images\标记素材.png" class="download-button" download>下载</a>
+                </div>
+            </div>
+
+            <!-- ========= 素材 2 ========= -->
+            <div class="material-item">
+                <img src="assests\images\标题2.png" alt="标题2">
+                <div class="item-info">
+                    <h3>标题2</h3>
+                    <a href="assests\images\标题2.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+            <!-- ========= 素材 3 ========= -->
+            <div class="material-item">
+                <img src="assests\images\标题3.png" alt="标题3">
+                <div class="item-info">
+                    <h3>标题3</h3>
+                    <a href="assests\images\标题3.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+            <!-- ========= 素材 4 (可以是其他类型文件，例如ZIP压缩包) ========= -->
+            <div class="material-item">
+                <!-- 给非图片文件一个预览图 -->
+                <img src="assests\images\豆包头像.png" alt="豆包头像">
+                <div class="item-info">
+                    <h3>豆包头像</h3>
+                    <a href="assests\images\豆包头像.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+            
+            <div class="material-item">
+                <img src="assests\images\高科技.png" alt="高科技">
+                <div class="item-info">
+                    <h3>高科技</h3>
+                    <a href="assests\images\高科技.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+                        <div class="material-item">
+                <img src="assests\images\高楼.png" alt="高楼">
+                <div class="item-info">
+                    <h3>高楼</h3>
+                    <a href="assests\images\高楼.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+                        <div class="material-item">
+                <img src="assests\images\花草.png" alt="花草">
+                <div class="item-info">
+                    <h3>花草</h3>
+                    <a href="assests\images\花草.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+                        <div class="material-item">
+                <img src="assests\images\花纹背景1.png" alt="花纹背景1">
+                <div class="item-info">
+                    <h3>花纹背景1</h3>
+                    <a href="assests\images\花纹背景1.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+                        <div class="material-item">
+                <img src="assests\images\花纹背景2.png" alt="花纹背景2">
+                <div class="item-info">
+                    <h3>花纹背景2</h3>
+                    <a href="assests\images\花纹背景2.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+                        <div class="material-item">
+                <img src="assests\images\火.png" alt="火">
+                <div class="item-info">
+                    <h3>火</h3>
+                    <a href=assests\images\火.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+                        <div class="material-item">
+                <img src="assests\images\健康.png" alt="健康">
+                <div class="item-info">
+                    <h3>健康</h3>
+                    <a href="assests\images\健康.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+                        <div class="material-item">
+                <img src="assests\images\卡通风.png" alt="卡通风">
+                <div class="item-info">
+                    <h3>卡通风</h3>
+                    <a href="assests\images\卡通风.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+                        <div class="material-item">
+                <img src="assests\images\科技风PPT.png" alt="科技风PPT">
+                <div class="item-info">
+                    <h3>科技风PPT</h3>
+                    <a href="assests\images\科技风PPT.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+            <div class="material-item">
+                <img src="assests\images\懒羊羊.png" alt="懒羊羊">
+                <div class="item-info">
+                    <h3>懒羊羊</h3>
+                    <a href="assests\images\懒羊羊.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+            <div class="material-item">
+                <img src="assests\images\水瓶.png" alt="水瓶">
+                <div class="item-info">
+                    <h3>水瓶</h3>
+                    <a href="assests\images\水瓶.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+            <div class="material-item">
+                <img src="assests\images\探究奇妙.png" alt="探究奇妙">
+                <div class="item-info">
+                    <h3>探究奇妙</h3>
+                    <a href="assests\images\探究奇妙.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+            <div class="material-item">
+                <img src="assests\images\小素材1.png" alt="小素材1">
+                <div class="item-info">
+                    <h3>小素材1</h3>
+                    <a href="assests\images\小素材1.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+            <div class="material-item">
+                <img src="assests\images\小素材2.png" alt="小素材2">
+                <div class="item-info">
+                    <h3>小素材2</h3>
+                    <a href="assests\images\小素材2.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+            <div class="material-item">
+                <img src="assests\images\小素材3.png" alt="小素材3">
+                <div class="item-info">
+                    <h3>小素材3</h3>
+                    <a href="assests\images\小素材3.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+            <div class="material-item">
+                <img src="assests\images\小素材4.png" alt="小素材4">
+                <div class="item-info">
+                    <h3>小素材4</h3>
+                    <a href="assests\images\小素材4.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+            <div class="material-item">
+                <img src="assests\images\小素材5.png" alt="小素材5">
+                <div class="item-info">
+                    <h3>小素材5</h3>
+                    <a href="assests\images\小素材5.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+            <div class="material-item">
+                <img src="assests\images\小素材6.png" alt="小素材6">
+                <div class="item-info">
+                    <h3>小素材6</h3>
+                    <a href="assests\images\小素材6.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+            <div class="material-item">
+                <img src="assests\images\直线png.png" alt="直线png">
+                <div class="item-info">
+                    <h3>直线png</h3>
+                    <a href="assests\images\直线png.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+            <div class="material-item">
+                <img src="assests\images\AI助手.png" alt="AI助手">
+                <div class="item-info">
+                    <h3>AI助手</h3>
+                    <a href="assests\images\AI助手.png" class="download-button" download>下载原图</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const sidebar = document.querySelector('.sidebar');
+        const toggleBtn = document.querySelector('.sidebar-toggle-button');
+
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('sidebar-open');
+            document.body.classList.toggle('sidebar-is-open');
+        });
+    </script>
+
+</body>
+</html>
