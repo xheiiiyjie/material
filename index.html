@@ -2,45 +2,57 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>四个小伙伴</title>
+    <style>
+        /* 移除浏览器默认的边距和内边距 */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* 防止出现滚动条 */
+        }
+
+        body {
+            /* 使用 Flexbox 让图片在页面上垂直和水平居中 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000; /* 设置一个黑色背景，突出图片 */
+        }
+
+        /* <a> 标签是图片的容器 */
+        .image-downloader {
+            display: block;
+        }
+
+        /* 图片样式 */
+        .image-downloader img {
+            display: block; /* 移除图片底部的微小空隙 */
+            /* 关键样式：确保图片适应屏幕大小，但不变形 */
+            max-width: 100vw;   /* 最大宽度为视口宽度的100% */
+            max-height: 100vh;  /* 最大高度为视口高度的100% */
+            cursor: pointer;    /* 鼠标悬停时显示为手形，提示用户可以点击 */
+        }
+    </style>
 </head>
 <body>
 
-    <script>
-        // --- 核心部分开始 ---
-
-        // 使用 window.onload 确保在页面所有元素都加载完毕后执行脚本
-        window.onload = function() {
-            // 1. 创建一个隐藏的 <a> 标签（链接）
-            const downloadLink = document.createElement('a');
-
-            // 2. 指定要下载的图片路径 (URL)
-            // !!! 这是你需要修改的最重要的地方 !!!
-            downloadLink.href = './assests/images/探究奇妙.png'; // <--- 替换成你的图片URL
-
-            // 3. 设置下载后的文件名
-            // 这个属性会告诉浏览器这是一个下载操作，并建议文件名
-            downloadLink.download = 'image.png'; // <--- 你希望用户保存的文件名
-
-            // 4. 将这个隐藏的链接添加到页面中
-            // 某些浏览器要求元素必须在文档中才能触发点击事件
-            document.body.appendChild(downloadLink);
-
-            // 5. 用代码模拟点击这个链接，从而触发浏览器下载
-            downloadLink.click();
-
-            // 6. 从页面中移除这个链接，保持页面干净
-            document.body.removeChild(downloadLink);
-
-            // 7. 尝试关闭当前窗口
-            // 延迟一小段时间（例如500毫秒），确保下载提示框有足够时间弹出
-            setTimeout(() => {
-                window.close();
-            }, 500);
-        };
-
-        // --- 核心部分结束 ---
-    </script>
+    <!-- 
+        核心部分：
+        1. <a> 标签用于创建链接和下载功能。
+        2. href="..." 指向你要提供下载的原始图片文件。
+        3. download 属性是关键，它告诉浏览器点击链接时是下载文件，而不是跳转页面。
+           你还可以在 download 属性中指定一个建议的文件名，例如 download="beautiful-scenery.jpg"。
+           如果留空，则使用原始文件名。
+        4. <img> 标签用于在页面上显示图片。
+        5. src="..." 指向你希望在网页上看到的图片。
+           通常，href 和 src 指向同一个文件即可。
+    -->
+    <a href="./assests/images/探究奇妙.png" download class="image-downloader">
+        <img src="./assests/images/探究奇妙.png" alt="这里是图片的描述，为了搜索引擎优化和可访问性">
+    </a>
 
 </body>
 </html>
